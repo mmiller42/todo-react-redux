@@ -29,7 +29,11 @@ export default class ErrorMessage extends Component {
 		return (
 			<div className="alert alert-danger alert-dismissible">
 				<button type="button" onClick={() => this.props.updateUI('isCollapsed', true)} className="close">×</button>
-				{lastError.message}
+				{
+					typeof lastError.message === 'string'
+						? lastError.message
+						: <pre>{JSON.stringify(lastError.message, null, 2)}</pre>
+				}
 			</div>
 		);
 	}
