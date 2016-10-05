@@ -1,0 +1,7 @@
+.todo {
+	padding-left: 20px;
+}
+
+.todo input[type='checkbox'] {
+	margin-left: -20px;
+}

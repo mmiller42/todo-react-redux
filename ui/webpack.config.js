@@ -20,14 +20,20 @@ module.exports = {
 	module: {
 		loaders: [
 			{
-				test: /\.jsx$/,
-				include: path.join(__dirname, 'lib'),
-				loader: 'jsx-loader'
-			},
-			{
 				test: /\.(js|jsx)$/,
 				exclude: /(node_modules|bower_components)/,
-				loader: 'babel-loader'
+				loader: 'babel-loader',
+				query: {
+					presets: [
+						'latest',
+						'react'
+					],
+					plugins: [
+						'transform-decorators-legacy',
+						'transform-class-properties',
+						'transform-object-rest-spread'
+					]
+				}
 			},
 			{
 				test: /\.css$/,
@@ -84,6 +90,15 @@ module.exports = {
 				name: 'react-router-redux',
 				var: 'ReactRouterRedux',
 				url: 'https://cdnjs.cloudflare.com/ajax/libs/react-router-redux/4.0.5/ReactRouterRedux.js'
+			},
+			{
+				name: 'lodash',
+				var: '_',
+				url: 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.js'
+			},
+			{
+				name: 'bootstrap',
+				url: 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css'
 			}
 		]),
 		new ExtractTextPlugin('bundle.css')

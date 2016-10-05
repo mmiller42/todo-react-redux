@@ -6,9 +6,13 @@
 			"type": "string",
 			"minLength": 1,
 			"maxLength": 100
+		},
+		"isCompleted": {
+			"type": "boolean"
 		}
 	},
 	"required": [
-		"description"
+		"description",
+		"isCompleted"
 	]
 }

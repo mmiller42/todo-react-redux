@@ -12,8 +12,6 @@ const app = express();
 app.use(bodyParser.json({}));
 app.use(cors());
 
-app.get('/', (req, res) => res.json({message: 'Hello world!'}));
-
 app.use(new Autonym(__dirname).middleware);
 app.use(new AutonymResponder(handleError).middleware);
 

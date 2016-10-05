@@ -1,12 +1,10 @@
-import promise from 'redux-promise';
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import {Router, Route, browserHistory} from 'react-router';
+import {Router, browserHistory} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
 
-import configureStore from './configure-store';
+import configureStore from './utils/configure-store';
 import createRoutes from './routes';
 
 const store = configureStore();
