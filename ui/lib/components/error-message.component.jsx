@@ -12,6 +12,8 @@ export default class ErrorMessage extends Component {
 	constructor (props) {
 		super(props);
 		this.previousError = null;
+
+		this.collapseError = this.collapseError.bind(this);
 	}
 
 	render () {
@@ -28,7 +30,7 @@ export default class ErrorMessage extends Component {
 
 		return (
 			<div className="alert alert-danger alert-dismissible">
-				<button type="button" onClick={() => this.props.updateUI('isCollapsed', true)} className="close">×</button>
+				<button type="button" onClick={this.collapseError} className="close">×</button>
 				{
 					typeof lastError.message === 'string'
 						? lastError.message
@@ -36,5 +38,9 @@ export default class ErrorMessage extends Component {
 				}
 			</div>
 		);
+	}
+
+	collapseError () {
+		this.props.updateUI('isCollapsed', true);
 	}
 };

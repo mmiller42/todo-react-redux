@@ -60,47 +60,65 @@ module.exports = {
 			template: './public/index.html',
 			filename: 'index.html'
 		}),
-		new HtmlWebpackExternalsPlugin([
-			{
-				name: 'react',
-				var: 'React',
-				url: 'https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react.js'
-			},
-			{
-				name: 'react-dom',
-				var: 'ReactDOM',
-				url: 'https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react-dom.js'
-			},
-			{
-				name: 'redux',
-				var: 'Redux',
-				url: 'https://cdnjs.cloudflare.com/ajax/libs/redux/3.6.0/redux.js'
-			},
-			{
-				name: 'react-redux',
-				var: 'ReactRedux',
-				url: 'https://cdnjs.cloudflare.com/ajax/libs/react-redux/4.4.5/react-redux.js'
-			},
-			{
-				name: 'react-router',
-				var: 'ReactRouter',
-				url: 'https://cdnjs.cloudflare.com/ajax/libs/react-router/2.4.1/ReactRouter.js'
-			},
-			{
-				name: 'react-router-redux',
-				var: 'ReactRouterRedux',
-				url: 'https://cdnjs.cloudflare.com/ajax/libs/react-router-redux/4.0.5/ReactRouterRedux.js'
-			},
-			{
-				name: 'lodash',
-				var: '_',
-				url: 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.js'
-			},
-			{
-				name: 'bootstrap',
-				url: 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css'
-			}
-		]),
+		new HtmlWebpackExternalsPlugin(
+			[
+				{
+					name: 'react',
+					var: 'React',
+					url: 'https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react.js'
+				},
+				{
+					name: 'react-dom',
+					var: 'ReactDOM',
+					url: 'https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react-dom.js'
+				},
+				{
+					name: 'redux',
+					var: 'Redux',
+					url: 'https://cdnjs.cloudflare.com/ajax/libs/redux/3.6.0/redux.js'
+				},
+				{
+					name: 'react-redux',
+					var: 'ReactRedux',
+					url: 'https://cdnjs.cloudflare.com/ajax/libs/react-redux/4.4.5/react-redux.js'
+				},
+				{
+					name: 'react-router',
+					var: 'ReactRouter',
+					url: 'https://cdnjs.cloudflare.com/ajax/libs/react-router/2.4.1/ReactRouter.js'
+				},
+				{
+					name: 'react-router-redux',
+					var: 'ReactRouterRedux',
+					url: 'https://cdnjs.cloudflare.com/ajax/libs/react-router-redux/4.0.5/ReactRouterRedux.js'
+				},
+				{
+					name: 'redux-actions',
+					var: 'ReduxActions',
+					path: 'redux-actions/dist/redux-actions.js'
+				},
+				{
+					name: 'redux-promise-middleware',
+					var: 'ReduxPromiseMiddleware',
+					path: 'redux-promise-middleware/dist/ReduxPromiseMiddleware.js'
+				},
+				{
+					name: 'superagent',
+					var: 'superagent',
+					path: 'superagent/superagent.js'
+				},
+				{
+					name: 'lodash',
+					var: '_',
+					url: 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.js'
+				},
+				{
+					name: 'bootstrap',
+					url: 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css'
+				}
+			],
+			{basedir: __dirname}
+		),
 		new ExtractTextPlugin('bundle.css')
 	]
 };

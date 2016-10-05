@@ -12,6 +12,18 @@ import '../styles/todo.component.css';
 })
 @pureRender
 export default class Todo extends Component {
+	constructor (props) {
+		super(props);
+
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleInputChange = this.handleInputChange.bind(this);
+		this.handleInputKeyDown = this.handleInputKeyDown.bind(this);
+		this.handleDeleteButtonClick = this.handleDeleteButtonClick.bind(this);
+		this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
+		this.selectTodo = this.selectTodo.bind(this);
+		this.save = this.save.bind(this);
+	}
+
 	render () {
 		const {todo} = this.props;
 
@@ -30,28 +42,16 @@ export default class Todo extends Component {
 		const {ui, todo} = this.props;
 		
 		return (
-			<form className={todo ? 'input-group' : ''} onSubmit={
-				e => {
-					e.preventDefault();
-					this.save();
-					this.props.updateUI('selectedTodoId', null);
-					if (!todo) {
-						setTimeout(() => this.props.updateUI('description', ''), 0);
-					}
-				}
-			}>
+			<form className={todo ? 'input-group' : ''} onSubmit={this.handleSubmit}>
 				<input type="text" required autoFocus value={ui.description} className="form-control"
-					onChange={e => this.props.updateUI('description', e.target.value)}
-				 onKeyDown={e => e.key === 'Escape' && this.props.updateUI('selectedTodoId', null)}
+					onChange={this.handleInputChange}
+				 onKeyDown={this.handleInputKeyDown}
 					placeholder={todo ? todo.description : 'New todo'} />
 				{
 					todo
 						? <span className="input-group-btn">
 								<button type="button" className="btn btn-default"
-									onClick={() => {
-										this.delete();
-										this.props.updateUI('selectedTodoId', null);
-									}}>
+									onClick={this.handleDeleteButtonClick}>
 									<span className="glyphicon glyphicon-trash"></span>
 								</button>
 							</span>
@@ -59,6 +59,32 @@ export default class Todo extends Component {
 				}
 			</form>
 		);
+	}
+
+	handleSubmit (e) {
+		const {todo} = this.props;
+
+		e.preventDefault();
+		this.save();
+		this.props.updateUI('selectedTodoId', null);
+		if (!todo && this.props.ui.description !== '') {
+			setTimeout(() => this.props.updateUI('description', ''), 0);
+		}
+	}
+
+	handleInputChange (e) {
+		this.props.updateUI('description', e.target.value);
+	}
+
+	handleInputKeyDown (e) {
+		if (e.key === 'Escape') {
+			this.props.updateUI('selectedTodoId', null)
+		}
+	}
+
+	handleDeleteButtonClick () {
+		this.delete();
+		this.props.updateUI('selectedTodoId', null);
 	}
 	
 	renderViewMode () {
@@ -69,14 +95,18 @@ export default class Todo extends Component {
 				<div className="form-group">
 					<label className={todo ? '' : ' hidden'}>
 						<input type="checkbox" checked={ui.isCompleted}
-							onChange={e => this.toggleIsCompleted(e.target.checked)} />
+							onChange={this.handleCheckboxChange} />
 					</label>
-					<p className="form-control-static" onClick={() => this.selectTodo()}>
+					<p className="form-control-static" onClick={this.selectTodo}>
 						{todo ? this.renderDescription() : <i className="text-muted">New todo</i>}
 					</p>
 				</div>
 			</div>
 		);
+	}
+
+	handleCheckboxChange (e) {
+		this.toggleIsCompleted(e.target.checked);
 	}
 
 	renderDescription () {
@@ -91,7 +121,7 @@ export default class Todo extends Component {
 
 	toggleIsCompleted (isCompleted) {
 		this.props.updateUI('isCompleted', isCompleted);
-		setTimeout(() => this.save(), 0);
+		setTimeout(this.save, 0);
 	}
 	
 	save () {

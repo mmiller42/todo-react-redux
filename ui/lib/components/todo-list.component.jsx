@@ -12,6 +12,12 @@ import Loading from './loading.component';
 })
 @pureRender
 export default class TodoList extends Component {
+	constructor (props) {
+		super(props);
+
+		this.refresh = this.refresh.bind(this);
+	}
+
 	componentDidMount () {
 		this.refresh();
 	}
@@ -33,7 +39,7 @@ export default class TodoList extends Component {
 					this.props.ui.selectedTodoId
 						? null
 						: <div className="pull-right">
-								<button type="button" onClick={() => this.refresh()} className="btn btn-lg btn-link">
+								<button type="button" onClick={this.refresh} className="btn btn-lg btn-link">
 									<span className="glyphicon glyphicon-refresh"></span>
 								</button>
 							</div>
