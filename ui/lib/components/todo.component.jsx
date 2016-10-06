@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ui from 'redux-ui';
+import ui from 'redux-ui-shallow';
 import pureRender from 'pure-render-decorator';
 
 import '../styles/todo.component.css';
@@ -8,7 +8,8 @@ import '../styles/todo.component.css';
 	state: {
 		description: props => props.todo ? props.todo.description : '',
 		isCompleted: props => props.todo ? props.todo.isCompleted : false
-	}
+	},
+	shallowCompare: true
 })
 @pureRender
 export default class Todo extends Component {

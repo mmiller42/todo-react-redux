@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ui from 'redux-ui';
+import ui from 'redux-ui-shallow';
 import pureRender from 'pure-render-decorator';
 
 import Todo from './todo.component';
@@ -8,7 +8,8 @@ import Loading from './loading.component';
 @ui({
 	state: {
 		selectedTodoId: null
-	}
+	},
+	shallowCompare: true
 })
 @pureRender
 export default class TodoList extends Component {
