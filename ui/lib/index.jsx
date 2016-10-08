@@ -9,7 +9,7 @@ const store = configureStore();
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App />
+		<App version={process.env.VERSION} />
 	</Provider>,
 	document.querySelector('#app')
 );

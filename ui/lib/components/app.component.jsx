@@ -25,10 +25,13 @@ export default class App extends Component {
 				</div>
 				<div className="footer">
 					<p>
+						Todos v{this.props.version}{' '}
 						© <a href="https://mmiller.me/" target="_blank">Matt Miller</a>.
 						Powered by <a href="http://reactjs.com/" target="_blank">React</a>,{' '}
 						<a href="http://redux.js.org/" target="_blank">Redux</a>, and{' '}
 						<a href="https://autonym.io/" target="_blank">Autonym</a>.
+						Deployed with <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> and{' '}
+						<a href="https://now.sh/" target="_blank">∆ now</a>.
 					</p>
 				</div>
 			</div>
