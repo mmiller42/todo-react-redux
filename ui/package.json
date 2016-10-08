@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "webpack-dev-server --content-base ./build --hot --inline --progress --colors",
     "build": "NODE_ENV=production webpack -p --progress --colors",
-    "serve": "http-server build/"
+    "serve": "http-server build/",
+    "deploy": "npm run build && gh-pages -d build"
   },
   "dependencies": {
     "pure-render-decorator": "^1.1.1",
@@ -24,6 +25,7 @@
     "css-loader": "~0.23.1",
     "extract-text-webpack-plugin": "~1.0.1",
     "file-loader": "~0.9.0",
+    "gh-pages": "^0.11.0",
     "html-loader": "~0.4.3",
     "html-webpack-externals-plugin": "~2.0.0",
     "html-webpack-plugin": "~2.22.0",
