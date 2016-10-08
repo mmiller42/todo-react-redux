@@ -59,7 +59,7 @@ module.exports = {
 		new webpack.DefinePlugin({
 			'process.env': {
 				NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-				API_URI: JSON.stringify(PROD ? 'https://api-ubacslavwb.now.sh' : 'http://localhost:3000')
+				API_URI: JSON.stringify(process.env.API_URI)
 			}
 		}),
 		new HtmlWebpackPlugin({
@@ -87,16 +87,6 @@ module.exports = {
 					name: 'react-redux',
 					var: 'ReactRedux',
 					url: 'https://cdnjs.cloudflare.com/ajax/libs/react-redux/4.4.5/react-redux.js'
-				},
-				{
-					name: 'react-router',
-					var: 'ReactRouter',
-					url: 'https://cdnjs.cloudflare.com/ajax/libs/react-router/2.4.1/ReactRouter.js'
-				},
-				{
-					name: 'react-router-redux',
-					var: 'ReactRouterRedux',
-					url: 'https://cdnjs.cloudflare.com/ajax/libs/react-router-redux/4.0.5/ReactRouterRedux.js'
 				},
 				{
 					name: 'redux-actions',
