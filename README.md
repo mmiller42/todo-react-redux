@@ -7,7 +7,7 @@ This was built to experiment with a few new technologies. Among them:
 * [react-redux](https://github.com/reactjs/react-redux)
 * [redux-actions](https://github.com/acdlite/redux-actions)
 * [redux-promise-middleware](https://github.com/pburtchaell/redux-promise-middleware)
-* [redux-ui](https://github.com/tonyhb/redux-ui)
+* [redux-ui](https://github.com/mmiller42/redux-ui)
 * [superagent](http://visionmedia.github.io/superagent/)
 
 ## Installation
@@ -49,7 +49,7 @@ The app requires both the API and UI processes running.
    changes in the source and hot-reloads the interface. The UI runs on port 8080 by default.
 
    ```sh
-   cd api
+   cd ui
    npm run dev
    open http://localhost:8080/
    ```
