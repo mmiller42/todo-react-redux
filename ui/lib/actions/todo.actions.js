@@ -14,8 +14,8 @@ export const {
 	updateTodo,
 	deleteTodo
 } = createActions({
-	[FETCH_TODOS]: () => promisify(request.get(`${ENV.API_URI}/todos`)),
-	[CREATE_TODO]: attributes => promisify(request.post(`${ENV.API_URI}/todos`).send(attributes)),
-	[UPDATE_TODO]: (id, attributes) => promisify(request.patch(`${ENV.API_URI}/todos/${id}`).send(attributes)),
-	[DELETE_TODO]: id => promisify(request.delete(`${ENV.API_URI}/todos/${id}`)).then(() => ({id}))
+	[FETCH_TODOS]: () => promisify(request.get(`${process.env.API_URI}/todos`)),
+	[CREATE_TODO]: attributes => promisify(request.post(`${process.env.API_URI}/todos`).send(attributes)),
+	[UPDATE_TODO]: (id, attributes) => promisify(request.patch(`${process.env.API_URI}/todos/${id}`).send(attributes)),
+	[DELETE_TODO]: id => promisify(request.delete(`${process.env.API_URI}/todos/${id}`)).then(() => ({id}))
 });

@@ -57,9 +57,9 @@ module.exports = {
 	},
 	plugins: [
 		new webpack.DefinePlugin({
-			ENV: {
-				NODE_ENV: process.env.NODE_ENV,
-				API_URI: PROD ? 'https://api-ubacslavwb.now.sh' : 'http://localhost:3000'
+			'process.env': {
+				NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+				API_URI: JSON.stringify(PROD ? 'https://api-ubacslavwb.now.sh' : 'http://localhost:3000')
 			}
 		}),
 		new HtmlWebpackPlugin({
