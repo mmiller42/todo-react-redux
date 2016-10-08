@@ -14,8 +14,8 @@ export const {
 	updateTodo,
 	deleteTodo
 } = createActions({
-	[FETCH_TODOS]: () => promisify(request.get('https://api-ubacslavwb.now.sh/todos')),
-	[CREATE_TODO]: attributes => promisify(request.post('https://api-ubacslavwb.now.sh/todos').send(attributes)),
-	[UPDATE_TODO]: (id, attributes) => promisify(request.patch(`https://api-ubacslavwb.now.sh/todos/${id}`).send(attributes)),
-	[DELETE_TODO]: id => promisify(request.delete(`https://api-ubacslavwb.now.sh/todos/${id}`)).then(() => ({id}))
+	[FETCH_TODOS]: () => promisify(request.get(`${ENV.API_URI}/todos`)),
+	[CREATE_TODO]: attributes => promisify(request.post(`${ENV.API_URI}/todos`).send(attributes)),
+	[UPDATE_TODO]: (id, attributes) => promisify(request.patch(`${ENV.API_URI}/todos/${id}`).send(attributes)),
+	[DELETE_TODO]: id => promisify(request.delete(`${ENV.API_URI}/todos/${id}`)).then(() => ({id}))
 });
