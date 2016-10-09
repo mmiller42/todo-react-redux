@@ -46,7 +46,7 @@ export default class Todo extends Component {
 			<form className={todo ? 'input-group' : ''} onSubmit={this.handleSubmit}>
 				<input type="text" required autoFocus value={ui.description} className="form-control"
 					onChange={this.handleInputChange}
-				 onKeyDown={this.handleInputKeyDown}
+				 	onKeyDown={this.handleInputKeyDown}
 					placeholder={todo ? todo.description : 'New todo'} />
 				{
 					todo
@@ -98,7 +98,7 @@ export default class Todo extends Component {
 						<input type="checkbox" checked={ui.isCompleted}
 							onChange={this.handleCheckboxChange} />
 					</label>
-					<p className="form-control-static" onClick={this.selectTodo}>
+					<p className="description form-control-static" onClick={this.selectTodo}>
 						{todo ? this.renderDescription() : <i className="text-muted">New todo</i>}
 					</p>
 				</div>

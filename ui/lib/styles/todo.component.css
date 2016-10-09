@@ -5,3 +5,7 @@
 .todo input[type='checkbox'] {
 	margin-left: -20px;
 }
+
+.todo .description {
+	cursor: url('./img/edit.cur'), context-menu;
+}

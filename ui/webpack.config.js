@@ -41,7 +41,7 @@ module.exports = {
 				loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
 			},
 			{
-				test: /\.(eot|woff|woff2|ttf|svg|gif|jpg|png)(\?v=\d+\.\d+\.\d+)?$/,
+				test: /\.(eot|woff|woff2|ttf|svg|gif|jpg|png|cur)(\?v=\d+\.\d+\.\d+)?$/,
 				loader: 'file-loader',
 				query: {
 					name: './assets/[name].[hash].[ext]'
