@@ -3,6 +3,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const PROD = process.env.NODE_ENV === 'production';
 const VERSION = require('./package.json').version;
@@ -73,32 +74,32 @@ module.exports = {
 				{
 					name: 'react',
 					var: 'React',
-					url: 'https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react.js'
+					path: 'react/dist/react.min.js'
 				},
 				{
 					name: 'react-dom',
 					var: 'ReactDOM',
-					url: 'https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react-dom.js'
+					path: 'react-dom/dist/react-dom.min.js'
 				},
 				{
 					name: 'redux',
 					var: 'Redux',
-					url: 'https://cdnjs.cloudflare.com/ajax/libs/redux/3.6.0/redux.js'
+					path: 'redux/dist/redux.min.js'
 				},
 				{
 					name: 'react-redux',
 					var: 'ReactRedux',
-					url: 'https://cdnjs.cloudflare.com/ajax/libs/react-redux/4.4.5/react-redux.js'
+					path: 'react-redux/dist/react-redux.min.js'
 				},
 				{
 					name: 'redux-actions',
 					var: 'ReduxActions',
-					path: 'redux-actions/dist/redux-actions.js'
+					path: 'redux-actions/dist/redux-actions.min.js'
 				},
 				{
 					name: 'redux-promise-middleware',
 					var: 'ReduxPromiseMiddleware',
-					path: 'redux-promise-middleware/dist/ReduxPromiseMiddleware.js'
+					path: 'redux-promise-middleware/dist/ReduxPromiseMiddleware.min.js'
 				},
 				{
 					name: 'superagent',
@@ -108,15 +109,18 @@ module.exports = {
 				{
 					name: 'lodash',
 					var: '_',
-					url: 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.js'
+					path: 'lodash/lodash.min.js'
 				},
 				{
 					name: 'bootstrap',
-					url: 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css'
+					path: 'bootstrap/dist/css/bootstrap.min.css'
 				}
 			],
 			{basedir: __dirname}
 		),
+		new CopyWebpackPlugin([
+			{from: 'node_modules/bootstrap/dist/', to: 'vendor/bootstrap/dist/'}
+		]),
 		new ExtractTextPlugin('bundle.css')
 	]
 };
