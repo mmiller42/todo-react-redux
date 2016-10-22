@@ -7,11 +7,6 @@ import '../styles/progress-bar.component.css';
 export default class ProgressBar extends Component {
 	render () {
 		const state = this.props.state.async;
-		console.log(state);
-
-		/*if (!state.isPending) {
-			return null;
-		}*/
 
 		return (
 			<div className="progress">
