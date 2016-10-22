@@ -9,3 +9,15 @@
 .todo .description {
 	cursor: url('./img/edit.cur'), context-menu;
 }
+
+@media (min-width: 0) {
+	.todo .form-inline .form-group {
+		display: inline-block;
+		margin-bottom: 0;
+		vertical-align: middle;
+	}
+
+	.todo .form-inline .form-control-static {
+		display: inline-block;
+	}
+}
